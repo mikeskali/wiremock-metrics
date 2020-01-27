@@ -70,6 +70,12 @@ public class MetricsRegistry {
 	}
 
 	public void recordTime(String path, String method, int statusCode, int timeMs){
+		if (path == null){
+			path = "ERROR_NO_PATH_PROVIDED";
+		}
+		if (method == null){
+			method = "ERROR_NO_METHOD_PROVIDED";
+		}
 		DistributionSummary dist = getDistributionSummary(path, method, statusCode);
 		dist.record(timeMs);
 	}

@@ -22,12 +22,32 @@ public class MetricsExtension extends PostServeAction {
 			StubMapping stabMapping = serveEvent.getStubMapping();
 			if (stabMapping != null) {
 				if (stabMapping.getRequest() != null) {
-					path = stabMapping.getRequest().getUrlPattern();
+					try {
+						path = stabMapping.getRequest().getUrlPattern();
+						if(path == null){
+							path = stabMapping.getRequest().getUrlPathPattern();
+						}
+					} catch (Exception e){
+						MetricsRegistry.getInstance().increaseError("FailedParsingURLPattern");
+					}
 				}
 			}
 
-			if (path.length() == 0) {
-				path = serveEvent.getRequest().getUrl().split("\\?")[0];
+			if (path == null || path.length() == 0) {
+				try {
+					String url = serveEvent.getRequest().getUrl();
+					if(url == null){
+						MetricsRegistry.getInstance().increaseError("URLIsNull");
+					} else {
+						path = serveEvent.getRequest().getUrl().split("\\?")[0];
+						if(path == null){
+							MetricsRegistry.getInstance().increaseError("URLNotNullPathNull");
+						}
+					}
+
+				} catch (Exception e){
+					MetricsRegistry.getInstance().increaseError("FailedParsingURL");
+				}
 			}
 
 			MetricsRegistry.getInstance().recordTime(
