@@ -24,3 +24,6 @@ add the generated jar to some dir (/WIREMOCK-EXTENSIONS-PATH/lib/)
 `java -cp /WIREMOCK-PATH/lib/*:/WIREMOCK-EXTENSIONS-PATH/lib/* com.github.tomakehurst.wiremock.standalone.WireMockServerRunner --extensions=wiremock.PrometheusExporterExtension,wiremock.MetricsExtension`
 
 prometheus endpoint will be exposed as `/__admin/metrics`
+
+## Grafana Dashboard
+You can import the wiremock-dashboard.json, located in grafana folder. 
