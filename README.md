@@ -1,6 +1,7 @@
 # wiremock-metrics
 
-Extension to add telemetry support to [Wiremock](https://github.com/tomakehurst/wiremock).
+Extension to add [Prometheus](https://prometheus.io/) telemetry support to [Wiremock](https://github.com/tomakehurst/wiremock).
+This repo utilized `PostServeAction` to record all requests and `AdminApiExtention` to expose metrics in Prometheus format (under `/admin__metrics`)
 
 ## Metrics
 | metric name            | description                                           | tags                                                                                                      |
