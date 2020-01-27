@@ -10,7 +10,7 @@ Extension to add telemetry support to [Wiremock](https://github.com/tomakehurst/
 | requestTimer_ms_bucket | Latency buckets, to be used with percentile functions | le - less equal, path - url stub pattern, status - http status, method - http method |
 | wiremock_metrics_errors_total| Errors while calculating metrics                      | errType - error type | 
 ## Build
-./gradlew clean fatJar
+`./gradlew clean fatJar`
 Ready to use jar will be under build/libs
 
 ## Use
