@@ -17,7 +17,6 @@ public class MetricsRegistry {
 	PrometheusMeterRegistry registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
 	Map<String, DistributionSummary> timersPerPath = new HashMap<>();
 	Map<String, Counter> errors = new HashMap<>();
-//    Counter errorCounter = registry.counter("errors");
 
 	private static MetricsRegistry metrics;
 
